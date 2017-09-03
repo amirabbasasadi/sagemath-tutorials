@@ -1,0 +1,27 @@
+/** Font Face **/
+@font-face {
+  font-family: Parastoo;
+  src: url('../fonts/Parastoo.eot');
+  src: url('../fonts/Parastoo.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Parastoo.woff') format('woff'),
+       url('../fonts/Parastoo.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Parastoo;
+  src: url('../fonts/Parastoo-Bold.eot');
+  src: url('../fonts/Parastoo-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Parastoo-Bold.woff') format('woff'),
+       url('../fonts/Parastoo-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Vazir Code;
+  src: url('../fonts/Vazir-Code.eot');
+  src: url('../fonts/Vazir-Code.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Vazir-Code.woff') format('woff'),
+       url('../fonts/Vazir-Code.ttf') format('truetype');
+  font-weight: normal;
+}
