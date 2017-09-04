@@ -3,7 +3,7 @@ window.$docsify = {
   name: 'محاسبات ریاضی با SageMath',
   homepage: 'home.md',
   basePath: 'pages/',
-  loadSidebar: '_sidebar.md',
+  loadSidebar: true,
   loadNavbar: false,
   subMaxLevel: 2,
   // call mathjax when page loaded
