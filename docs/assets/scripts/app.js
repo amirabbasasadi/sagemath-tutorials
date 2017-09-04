@@ -2,7 +2,7 @@
 window.$docsify = {
   name: 'محاسبات ریاضی با SageMath',
   homepage: 'main.md',
-  basePath: 'sagemath-tutorials/pages/',
+  basePath: 'pages/',
   loadSidebar: true,
   loadNavbar: false,
   subMaxLevel: 2,
