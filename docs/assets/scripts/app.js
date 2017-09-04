@@ -13,5 +13,9 @@ window.$docsify = {
           MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
         })
       }
-  ]
+  ],
+  search:{
+      placeholder: 'جستجو ...',
+      noData: 'موردی یافت نشد.'
+  }
 }

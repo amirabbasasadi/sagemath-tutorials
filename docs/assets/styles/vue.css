@@ -64,6 +64,9 @@ body {
     margin: 0;
     overflow-x: hidden
 }
+input{
+    font-family: Parastoo, Arial, sans-serif;
+}
 img {
     max-width: 100%
 }
@@ -349,7 +352,7 @@ body.sticky .sidebar-toggle {
     border-right: 4px solid #f66;
     border-top-left-radius: 2px;
     margin: 2em 0;
-    padding: 12px 24px 12px 30px;
+    padding: 12px 30px 12px 24px;
     position: relative
 }
 .markdown-section p.tip code {
@@ -684,7 +687,7 @@ body {
 .markdown-section h5,
 .markdown-section h6 {
     font-size: 16px;
-    font-size: 0.75rem
+    font-size: 0.9rem
 }
 .markdown-section h6 {
     color: #777
