@@ -1,7 +1,7 @@
 // docsify configuration
 window.$docsify = {
   name: 'محاسبات ریاضی با SageMath',
-  homepage: 'home.md',
+  homepage: 'main.md',
   basePath: 'pages/',
   loadSidebar: true,
   loadNavbar: false,
