@@ -1,3 +1,3 @@
 # Persian SageMath Tutorials
 
-Containing Free Tutorials According To The SageMath Documentation.
+Containing Free Tutorials Based On SageMath Documentation.
