@@ -103,9 +103,9 @@ $$ y = \sin{x}\cos{\frac{x}{\pi}} $$
 plot(sin(x)*cos(x/pi), (x, -2*pi, 2*pi), ticks=pi/2, tick_formatter=pi)
 ```
 ![رسم یک نگاشت](images/sagemath_plot1.svg)
-رسم نگاشت و انیمیشن:
+رسم نگاشت و ساخت انیمیشن:
 ```python
-c = [plot(sin(x)*cos(x*(i*pi)), (x, -2*pi, 2*pi), ticks=pi/2, tick_formatter=pi, ymin=-1, ymax=1) for i in sxrange(0, 1, 0.02) ]
+c = [plot(sin(x)*cos(x*i*pi), (x, -2*pi, 2*pi), ticks=pi/2, tick_formatter=pi, ymin=-1, ymax=1) for i in sxrange(0, 1, 0.02) ]
 a = animate(c)
 a.show()
 ```
@@ -128,3 +128,70 @@ x,y = var('x y')
 plot3d(x^2+y^2, (x, -10, 10), (y, -10, 10))
 ```
 ![رسم سه بعدی](images/sagemath_plot4.png)
+
+کار با ماتریس ها:
+$$ A = \left(\begin{array}{rrr}
+1 & 0 & 8 \\\\
+-9 & 2 & 1 \\\\
+0 & 1 & 2
+\end{array}\right) \, B = \left(\begin{array}{rrr}
+3 & 2 & 1 \\\\
+7 & 6 & 7 \\\\
+1 & 3 & 3
+\end{array}\right) $$
+```python
+# تعریف دو ماتریس
+A = Matrix([ [1, 0, 8], [-9, 2, 1], [0, 1, 2] ])
+B = Matrix([ [3, 2, 1], [7, 6, 7], [1, 3, 3] ])
+
+# مجموع دو ماتریس
+A+‌B
+#[ 4  2  9]
+#[-2  8  8]
+#[ 1  4  5]
+# ضرب دو ماتریس
+A*B
+#[ 11  26  25]
+#[-12  -3   8]
+#[  9  12  13]
+# دترمینان ماتریس
+A.det()
+# -69
+# وارون ماتریس
+A.inverse()
+#[-1/23 -8/69 16/69]
+#[-6/23 -2/69 73/69]
+#[ 3/23  1/69 -2/69]
+```
+کار با گراف ها:
+```python
+# معرفی متغیر به عنوان یک گراف
+G = Graph()
+# افزودن رئوس گراف
+G.add_vertices(['a', 'b', 'c', 'd', 'e'])
+# افزودن یال های گراف
+G.add_edges([['a', 'b'], ['b', 'c'], ['c', 'd'], ['d', 'e'], ['e', 'a'], ['b', 'e'], ['c', 'e']])
+# نمایش ماتریس مجاورت این گراف
+G.adjacency_matrix()
+#[0 1 0 0 1]
+#[1 0 1 0 1]
+#[0 1 0 1 1]
+#[0 0 1 0 1]
+#[1 1 1 1 0]
+# نمایش مسیر های بین دو راس
+G.all_paths('a', 'b')
+#[['a', 'b'], ['a', 'e', 'b'], ['a', 'e', 'c', 'b'], ['a', 'e', 'd', 'c', 'b']]
+# بررسی درخت بودن گراف
+G.is_tree()
+#False
+# بررسی اویلری بودن گراف
+G.is_eulerian()
+#False
+# بررسی همیلتونی بودن گراف
+G.is_hamiltonian()
+#True
+# نمایش گراف
+plot(G)
+# تصویر زیر نتیجه اجرای دستور نمایش گراف است.
+```
+![نمایش یک گراف](images/sagemath_plot5.svg)
