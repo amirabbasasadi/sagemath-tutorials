@@ -32,6 +32,7 @@
 (2 + 3*I) - (7 - 9*I)
 # 12*I - 5
 ```
+---
 توابع مختلفی در SageMath تعریف شده اند:
 ```python
 sin(pi/3)
@@ -45,12 +46,14 @@ gamma(5)
 sqrt(-1)
 # I
 ```
+---
 فرض کنید قصد حل معادله زیر را داریم:
 $$ x^2+4x-15=0 $$
 ```python
 solve(x^2 + 4*x -15, x)
 # [x == -sqrt(19) - 2, x == sqrt(19) - 2]
 ```
+
 امکان ریشه یابی معادلات با شیوه های عددی هم وجود دارد.
 $$ \cos{x} = x $$
 
@@ -65,12 +68,53 @@ x1,x2,x3 = var('x1,x2,x3')
 solve([x1 - 2*x2 + x3 == 5, 3*x1 + 4*x2 - x3 == 7, -x1 -x2 +2*x3 == -3], [x1, x2, x3])
 # [[x1 == (31/9), x2 == (-8/9), x3 == (-2/9)]]
 ```
+
+محاسبه مجموع سری:
+
+$$\sum^{\infty}_{k=1}{\frac{1}{k^2}}$$
+```python
+k = var('k')
+sum(1/k^2, k, 1, oo)
+# 1/6*pi^2
+```
+
+
+یافتن رگرسیون:
+```python
+a,b,x = var('a,b,x')
+model(x) = a*x + b
+data = [(0, 2), (2, 6), (3, 9.5), (4, 11), (5, 17.5), (7, 26)]
+find_fit(data, model)
+# [a == 3.4576271186494285, b == -0.10169491525664309]
+```
+
+---
+
 تعریف توابع:
 ```python
 f(x,y) = x^2 + y^2 -1
 f(0.25, 0.75)
 # -0.375000000000000
 ```
+محاسبه حد یک تابع:
+
+$$ \lim_{x\to0} \frac{\sin{x}}{x} $$
+```python
+limit(sin(x)/x, x=0)
+# 1
+```
+
+محاسبه مشتق یک تابع:
+
+$$ f(x) = \frac{sin(x^3)cos(5x)}{1+x^2} $$
+```python
+f(x) = sin(x^3)*cos(5*x)/(1+x^2)
+f(x).derivative()
+# 3*x^2*cos(x^3)*cos(5*x)/(x^2 + 1) - 2*x*cos(5*x)*sin(x^3)/(x^2 + 1)^2 - 5*sin(x^3)*sin(5*x)/(x^2 + 1)
+```
+
+
+
 محاسبه انتگرال معین و نامعین:
 $$ \int^1_{-1}{\sqrt{1-x^2}\,dx} $$
 
@@ -88,21 +132,35 @@ y = function('y')(x)
 desolve(diff(y, x, 2) + diff(y, x) - y==0, y)
 # _K2*e^(-1/2*x*(sqrt(5) + 1)) + _K1*e^(1/2*x*(sqrt(5) - 1))
 ```
-یافتن رگرسیون:
+محاسبه بسط تیلور یک تابع:
 ```python
-a,b,x = var('a,b,x')
-model(x) = a*x + b
-data = [(0, 2), (2, 6), (3, 9.5), (4, 11), (5, 17.5), (7, 26)]
-find_fit(data, model)
-# [a == 3.4576271186494285, b == -0.10169491525664309]
+taylor(cos(x), x, 0, 6)
+# -1/720*x^6 + 1/24*x^4 - 1/2*x^2 + 1
 ```
-رسم یک نگاشت:
 
-$$ y = \sin{x}\cos{\frac{x}{\pi}} $$
+
+مثالی از محاسبه تبدیل لاپلاس:
+
+$$ \mathcal{L}\\{\cos{(at+b)}\\} $$
 ```python
-plot(sin(x)*cos(x/pi), (x, -2*pi, 2*pi), ticks=pi/2, tick_formatter=pi)
+a, b, t, s = var('a b t s')
+f(t) = cos(a*t+b)
+laplace(f(t), t, s)
+# (s*cos(b) - a*sin(b))/(a^2 + s^2)
 ```
-![رسم یک نگاشت](images/sagemath_plot1.svg)
+
+
+
+رسم یک تابع:
+
+$$ y = \sin{x}\cos{\frac{x}{3}} $$
+```python
+plot(sin(x)*cos(x/3), (x, -2*pi, 2*pi), ticks=pi/2, tick_formatter=pi)
+```
+![رسم یک تابع](images/sagemath_plot1.svg)
+
+
+
 رسم نگاشت و ساخت انیمیشن:
 ```python
 c = [plot(sin(x)*cos(x*i*pi), (x, -2*pi, 2*pi), ticks=pi/2, tick_formatter=pi, ymin=-1, ymax=1) for i in sxrange(0, 1, 0.02) ]
@@ -111,23 +169,37 @@ a.show()
 ```
 ![رسم و انیمیشن](images/sagemath_plot2.gif)
 
----
-رسم منحنی پارامتری:
-$$ \begin{align} x(t) &= \sin{\pi t} \\\\ y(t) &= \cos{4t}\end{align}$$
+
+
+رسم پارامتری منحنی پروانه:
+$$ \begin{align}
+    x(t) &= \sin{(t)}\Big(e^{\cos{t}} - 2\cos{4t} - \sin^5{\big(\frac{t}{12}\big)}\Big)\\\\
+    y(t) &= \cos{(t)}\Big(e^{\cos{t}} - 2\cos{4t} - \sin^5{\big(\frac{t}{12}\big)}\Big)\\\\
+\end{align} $$
+$$ 0 \le t \le 12\pi $$
 ```python
 t = var('t')
-parametric_plot( (sin(pi*t), (cos(4*t))), (t, -5, 5))
-```
-![رسم منحنی های پارامتری](images/sagemath_plot3.svg)
+x(t) = sin(t)*( e^(cos(t)) - 2*cos(4*t) - sin(t/12)^5 )
+y(t) = cos(t)*( e^(cos(t)) - 2*cos(4*t) - sin(t/12)^5 )
+parametric_plot((x(t), y(t)), (t, 0, 12*pi), color='purple', plot_points=1000)```
 
-رسم سه بعدی:
+![منحنی پروانه](images/sagemath_plot3.svg)
 
-$$ z = x^2 + y^2 $$
+
+
+رسم یک چنبره:
+
+$$ (x^2 + y^2 + z^2 + 16)^2 = 100(x^2 + y^2) $$
 ```python
-x,y = var('x y')
-plot3d(x^2+y^2, (x, -10, 10), (y, -10, 10))
+x,y,z = var('x y z')
+implicit_plot3d((x^2 + y^2 + z^2 + 16)^2 == 100*(x^2 + y^2), (x, -10, 10), (y, -10, 10), (z, -10, 10))
 ```
+
 ![رسم سه بعدی](images/sagemath_plot4.png)
+
+
+
+---
 
 کار با ماتریس ها:
 $$ A = \left(\begin{array}{rrr}
@@ -163,6 +235,9 @@ A.inverse()
 #[-6/23 -2/69 73/69]
 #[ 3/23  1/69 -2/69]
 ```
+
+---
+
 کار با گراف ها:
 ```python
 # معرفی متغیر به عنوان یک گراف
