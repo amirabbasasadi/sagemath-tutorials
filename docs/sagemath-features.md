@@ -190,7 +190,8 @@ parametric_plot((x(t), y(t)), (t, 0, 12*pi), color='purple', plot_points=1000)``
 $$ r = sin^3(4\theta) - cos(4\theta) $$
 
 ```python
-polar_plot(sin(4*x)^3 - cos(4*x), (x, 0, 2*pi), color='#674172', fill=true, fillcolor='#674172', fillalpha=1)
+theta = var('theta')
+polar_plot(sin(4*theta)^3 - cos(4*theta), (theta, 0, 2*pi), color='#674172', fill=true, fillcolor='#674172', fillalpha=1)
 ```
 ![منحنی قطبی](images/sagemath_plot6.svg)
 
