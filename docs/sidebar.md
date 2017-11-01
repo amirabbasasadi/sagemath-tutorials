@@ -5,3 +5,4 @@
 - [معرفی قابلیت های SageMath](sagemath-features.md)
 - [نصب برنامه](sagemath-install.md)
 - [مفاهیم پایه](sagemath-fundamentals.md)
+- [کار با توابع](sagemath-functions.md)
