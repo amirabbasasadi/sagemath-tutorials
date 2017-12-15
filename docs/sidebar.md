@@ -6,3 +6,4 @@
 - [نصب برنامه](sagemath-install.md)
 - [مفاهیم پایه](sagemath-fundamentals.md)
 - [کار با توابع](sagemath-functions.md)
+- [ترسیم دو بعدی](sagemath-plot.md)
