@@ -27,7 +27,8 @@
 ## مباحث مربوط به حساب دیفرانسیل و انتگرال  
 - [کار با توابع](sagemath-functions.md)
 - [ترسیم دو بعدی(رسم در مختصات دکارتی، قطبی و رسم پارامتری و ضمنی)](sagemath-plot.md)
-
+- [حد و مشتق گیری](sagemath-limit-derivative.md)
+- [انتگرال گیری](sagemath-integration.md)
 
 لینک های مفید:
 - [وب سایت رسمی SageMath](http://sagemath.org/)
