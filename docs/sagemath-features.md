@@ -352,3 +352,35 @@ plot(G)
 # تصویر زیر نتیجه اجرای دستور نمایش گراف است.
 ```
 ![نمایش یک گراف](images/sagemath_plot5.svg)
+
+---
+
+کاربرد هایی در منطق گزاره ها  
+
+رسم جدول درستی یک گزاره:
+$$ (p\rightarrow q) \leftrightarrow \neg a $$
+```python
+f = propcalc.formula("(p->q)<->~a")
+f.truthtable()
+# p      q      a      value
+# False  False  False  True   
+# False  False  True   False  
+# False  True   False  True   
+# False  True   True   False  
+# True   False  False  False  
+# True   False  True   True   
+# True   True   False  True   
+# True   True   True   False 
+```
+بررسی راستگویی یک گزاره:
+```python
+f = propcalc.formula("(p|q)|(~p&~q)")
+f.is_tautology()
+# True
+```
+بررسی سازگاری یک سیستم:
+```python
+f, g, h, i = propcalc.get_formulas("a<->b", "~b->~c", "d|g", "c&a")
+propcalc.consistent(f, g, h, i)
+# True
+```
