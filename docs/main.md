@@ -27,10 +27,13 @@
 ## مباحث مربوط به حساب دیفرانسیل و انتگرال  
 - [کار با توابع](sagemath-functions.md)
 - [ترسیم دو بعدی(رسم در مختصات دکارتی، قطبی و رسم پارامتری و ضمنی)](sagemath-plot.md)
+- ترسیم سه بعدی (بزودی)
+- ساخت انیمیشن از نمودار توابع (بزودی)
 - [حد و مشتق گیری](sagemath-limit-derivative.md)
 - [انتگرال گیری](sagemath-integration.md)
 - [حل معادلات دیفرانسیل معمولی](sagemath-differential-equations.md)
-
+- سری ها (بزودی)  
+---
 لینک های مفید:
 - [وب سایت رسمی SageMath](http://sagemath.org/)
 - [مستندات رسمی SageMath](http://doc.sagemath.org/)
